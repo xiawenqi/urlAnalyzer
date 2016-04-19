@@ -1,0 +1,22 @@
+{
+  "name": "url-analyzer",
+  "version": "1.0.0",
+  "description": "a simple html analyzer",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "null"
+  },
+  "keywords": [
+    "null"
+  ],
+  "author": "Xueqian_Chen",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "node-xlsx": "^0.6.0",
+    "jsdom": "^8.4.0"
+  }
+}
