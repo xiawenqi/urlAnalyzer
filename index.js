@@ -35,7 +35,7 @@ jsdom.env({
 
             writeToXslx(res);
         } catch (e) {
-            console.log("无法解析文档， 请确认输入的url正确。")
+            console.log("无法解析文档， 请确认输入的url正确。");
         }
     }
 });
@@ -46,14 +46,21 @@ function getXPath(element) {
     if (element.id !== '')
         return '//*[@id="' + element.id + '"]';
     if (element === document.body)
-        return element.tagName;
+        return '/html/body';
 
     var ix = 0;
     var siblings = element.parentNode.childNodes;
+
+    var siblingLength = Array.prototype.filter.call(siblings, function(sitem){
+        return sitem.nodeType === 1;
+    }).length;
+
     for (var i = 0; i < siblings.length; i++) {
         var sibling = siblings[i];
-        if (sibling === element)
-            return getXPath(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + (ix + 1) + ']';
+        if (sibling === element){
+          var suffix = siblingLength === 1 ? '' : '[' + (ix + 1) + ']';
+          return getXPath(element.parentNode) + '/' + element.tagName.toLowerCase() +  suffix;
+        }
         if (sibling.nodeType === 1 && sibling.tagName === element.tagName)
             ix++;
     }

@@ -1,6 +1,6 @@
 [
 	{
-		"selector": "a",
+		"selector": "a[href]",
 		"type": "链接"
 	},
 	{
@@ -12,12 +12,24 @@
 		"type": "文本输入框"
 	},
 	{
-		"selector": "textarea",
-		"type": "多行文本输入框"
+		"selector": "input:not([type])",
+		"type": "文本输入框"
+	},
+	{
+		"selector": "input[type='checkbox']",
+		"type": "多选框"
+	},
+	{
+		"selector": "input[type='submit']",
+		"type": "表单提交按钮"
 	},
 	{
 		"selector": "input[type='password']",
 		"type": "密码输入框"
+	},
+	{
+		"selector": "input[type='vcode']",
+		"type": "验证码输入框"
 	},
 	{
 		"selector": "input[type='radio']",
@@ -32,6 +44,14 @@
 		"type": "按钮"
 	},
 	{
+		"selector": "input[type='image']",
+		"type": "图片"
+	},
+	{
+		"selector": "textarea",
+		"type": "多行文本输入框"
+	},
+	{
 		"selector": "button[type='button']",
 		"type": "普通按钮"
 	},
@@ -44,12 +64,7 @@
 		"type": "表单提交按钮"
 	},
 	{
-		"selector": "input[type='submit']",
-		"type": "表单提交按钮"
-	},
-	{
 		"selector": "select",
 		"type": "下拉框"
 	}
 ]
-
