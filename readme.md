@@ -2,12 +2,14 @@
 
 安装
 ```
-npm install
+npm install && npm install http-server -g
 ```
 
 运行
 ```
-node index.js www.baidu.com
+http-server
 ```
+
+浏览器访问 http://localhost:8080
 
 good luck:)

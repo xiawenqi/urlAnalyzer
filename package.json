@@ -16,7 +16,11 @@
   "author": "Xueqian_Chen",
   "license": "UNLICENSED",
   "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "jsdom": "^8.4.0",
+    "multiparty": "^4.1.2",
     "node-xlsx": "^0.6.0",
-    "jsdom": "^8.4.0"
+    "request": "^2.72.0"
   }
 }

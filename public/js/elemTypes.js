@@ -1,0 +1,70 @@
+var elemTypes = [
+	{
+		"selector": "a[href]",
+		"type": "链接"
+	},
+	{
+		"selector": "img",
+		"type": "图片"
+	},
+	{
+		"selector": "input[type='text']",
+		"type": "文本输入框"
+	},
+	{
+		"selector": "input:not([type])",
+		"type": "文本输入框"
+	},
+	{
+		"selector": "input[type='checkbox']",
+		"type": "多选框"
+	},
+	{
+		"selector": "input[type='submit']",
+		"type": "表单提交按钮"
+	},
+	{
+		"selector": "input[type='password']",
+		"type": "密码输入框"
+	},
+	{
+		"selector": "input[type='vcode']",
+		"type": "验证码输入框"
+	},
+	{
+		"selector": "input[type='radio']",
+		"type": "单选框"
+	},
+	{
+		"selector": "input[type='file']",
+		"type": "文件上传"
+	},
+	{
+		"selector": "input[type='button']",
+		"type": "按钮"
+	},
+	{
+		"selector": "input[type='image']",
+		"type": "图片"
+	},
+	{
+		"selector": "textarea",
+		"type": "多行文本输入框"
+	},
+	{
+		"selector": "button[type='button']",
+		"type": "普通按钮"
+	},
+	{
+		"selector": "button[type='reset']",
+		"type": "表单重置按钮"
+	},
+	{
+		"selector": "button[type='submit']",
+		"type": "表单提交按钮"
+	},
+	{
+		"selector": "select",
+		"type": "下拉框"
+	}
+]

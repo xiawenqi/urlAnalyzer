@@ -1,0 +1,23 @@
+/*index.css*/
+#main{
+	width: 1200px;
+	margin: 0 auto;
+}
+#header{
+	padding: 40px 0;
+}
+.normal{
+	width: 400px;
+	height: 34px;
+	padding: 5px;
+	outline: 0;
+}
+.search-btn{
+	margin-left: 20px;
+}
+#footer{
+	padding: 20px 0 40px;
+}
+td{
+	word-break: break-all;
+}

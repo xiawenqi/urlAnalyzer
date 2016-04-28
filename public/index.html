@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="./libs/bootstrap.min.css" />
+	<link rel="stylesheet" href="./css/index.css" />
+	<script src="./libs/jquery-2.2.3.min.js"></script>
+	<script src="./libs/underscore.js"></script>
+</head>
+<body>
+	<main id="main">
+		<header id="header">
+			<input type="text" class="normal search-ipt" id="stext" placeholder="要分析的url" />
+			<button class="btn btn-md btn-info">
+				<input type="file" id="tfile" />
+				<span></span>
+			</button>
+			<button class="btn btn-md btn-primary search-btn" id="sbtn" type="button">确定</button>
+		</header>
+		<article id="content">
+			<!-- <caption id="result-caption">http://www.baidu.com</caption> -->
+			<table id="result" class="table">
+				<tr>
+					<th>序号</th>
+					<th width="600" class="html-line">html</th>
+					<th width="300">xpath</th>
+					<th>类型</th>
+					<th>测试比例</th>
+				</tr>
+				<tbody id="result-tbody">
+					
+				</tbody>
+			</table>
+		</article>
+		<footer id="footer">
+			<button class="btn btn-md btn-primary">下载Excel</button>
+		</footer>
+	</main>
+
+	<script type="text/template" id="tableLineTmpl">
+		<tr>
+			<td><%= index %></td>
+			<td width="400" class="html-line"><%- html %></td>
+			<td><%= xpath %></td>
+			<td><%= elemType %></td>
+			<td></td> 
+		</tr>
+	</script>
+	<script src="js/index.js"></script>
+</body>
+</html>
