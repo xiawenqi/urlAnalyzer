@@ -20,47 +20,63 @@ app.post('/fetchUrl', (req, res) => {
 
 function fetchUrl(resp, url, text){
 	var selectors = getTextSelectors(text);
-
 	jsdom.env({
 	    url: url,
-	    done: function(err, window) {
-	        // try {
-	            var document = window.document;
-	            console.log("请求成功, 正在解析...");
-	            var acc = 1;
+	    done: (err, window) => {
+            var document = window.document;
+            console.log("请求成功, 正在解析...");
+            var acc = 1;
 
-	            var res = elemTypes.reduce(function(memo, type) {
-	                var elems = document.querySelectorAll(type.selector);
+            var res = elemTypes.reduce((memo, type) => {
+                var elems = document.querySelectorAll(type.selector);
 
-	                var typeElems = Array.prototype.map.call(elems, function(elem) {
-	                	var matched = testElem(elem, selectors);
-	                    return {
-	                    	index: acc++, 
-	                    	elemType: type.type, 
-	                    	html: elem.outerHTML, 
-	                    	xpath: getXPath(elem)
-	                    };
-	                });
+                var typeElems = Array.prototype.map.call(elems, function(elem) {
+                	var matcher = matchElem(elem, selectors);
+                    return {
+                    	index: acc++, 
+                    	elemType: type.type, 
+                    	html: elem.outerHTML, 
+                    	xpath: getXPath(elem),
+                    	matchers: matcher
+                    };
+                });
 
-	                return memo.concat(typeElems);
-	            }, []);
+                return memo.concat(typeElems);
+            }, []);
 
-	            resp.send(res);
-	        // } catch (e) {
-	        //     console.log("无法解析文档， 请确认输入的url正确。");
-	        // }
+            var coverLength = res.filter(resItem => {
+            	return resItem.matchers !== '';
+            }).length;
+            var coverRate = (coverLength / res.length * 100 + '').substr(0, 4) + '%';
+
+            resp.send({
+            	coverRate: coverRate,
+            	res: res
+            });
 	    }
 	});
 }
 
 // 检查节点是否match selector
-function testElem(elem, selectors){
-	var matched = false;
-	selectors.forEach(function(selector){
-		if(selector.type === 'css'){
-
+function matchElem(elem, selectors){
+	const document = elem.ownerDocument;
+	const window = document.defaultView;
+	const matchers = selectors.reduce((memo, sel) => {
+		if(sel.type === 'css' && elem.matches(sel.selector)){
+			return [...memo, sel.matcher];
 		}
-	});
+		if((sel.type === 'linkText' || sel.type === 'partialLinkText') && elem.innerHTML.search(sel.selector) >= 0){
+			return [...memo, sel.matcher];
+		}
+		if(sel.type === 'xpath' && 
+				document.evaluate(sel.selector, elem, null, window.XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue === elem){
+			return [...memo, sel.matcher];
+		}
+
+		return memo;
+	}, []);
+
+	return matchers.join(',')
 }
 
 

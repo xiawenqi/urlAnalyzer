@@ -20,11 +20,15 @@ function filterInput(url){
 	  fetchUrl(url, reader.result)
 	}
 
-	reader.readAsText($('#tfile')[0].files[0], 'GBK');
+	reader.readAsText($('#tfile')[0].files[0], 'UTF-8');
 }
 
 function fetchUrl(url, text){
-	$.post('/fetchUrl', {url: url, text: text}).then(function(res){
+	$.post('/fetchUrl', {url: url, text: text}).then(function(resp){
+		var res = resp.res;
+		$('#cover-rate').html(resp.coverRate);
+
+
 		var tmpl = _.template($('#tableLineTmpl').html());
 
 		var tbody = res.reduce(function(memo, item){
@@ -32,6 +36,8 @@ function fetchUrl(url, text){
 		}, '');
 
 		$('#result-tbody').html(tbody);
+
+		$('#content').show();
 	})
 }
 

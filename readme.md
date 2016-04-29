@@ -1,15 +1,17 @@
 #url analyzer
 
+需要 node 6.0.0
+
 安装
 ```
-npm install && npm install http-server -g
+npm install
 ```
 
 运行
 ```
-http-server
+node app.js
 ```
 
-浏览器访问 http://localhost:8080
+浏览器访问 http://localhost:3000/static/index.html
 
 good luck:)

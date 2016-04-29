@@ -13,11 +13,29 @@
 	outline: 0;
 }
 .search-btn{
-	margin-left: 20px;
+	/*margin-left: 5px;*/
+	width: 84px;
 }
 #footer{
 	padding: 20px 0 40px;
 }
 td{
 	word-break: break-all;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 0 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
 }
