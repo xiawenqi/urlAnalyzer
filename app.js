@@ -65,7 +65,10 @@ function matchElem(elem, selectors){
 		if(sel.type === 'css' && elem.matches(sel.selector)){
 			return [...memo, sel.matcher];
 		}
-		if((sel.type === 'linkText' || sel.type === 'partialLinkText') && elem.innerHTML.search(sel.selector) >= 0){
+		if(sel.type === 'linkText' && elem.textContent.trim() === sel.selector){
+			return [...memo, sel.matcher];
+		}
+		if(sel.type === 'partialLinkText' && elem.innerHTML.search(sel.selector) >= 0){
 			return [...memo, sel.matcher];
 		}
 		if(sel.type === 'xpath' && 
