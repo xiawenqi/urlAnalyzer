@@ -93,14 +93,15 @@ function getXPath(element) {
     var ix = 0;
     var siblings = element.parentNode.childNodes;
 
-    var siblingLength = Array.prototype.filter.call(siblings, function(sitem){
-        return sitem.nodeType === 1;
-    }).length;
-
     for (var i = 0; i < siblings.length; i++) {
         var sibling = siblings[i];
+
+        var sameTypeSiblingLength = Array.prototype.filter.call(siblings, function(sitem){
+        	return sitem.nodeType === 1 && sibling.tagName === sitem.tagName;
+    	}).length;
+
         if (sibling === element){
-          var suffix = siblingLength === 1 ? '' : '[' + (ix + 1) + ']';
+          var suffix = sameTypeSiblingLength === 1 ? '' : '[' + (ix + 1) + ']';
           return getXPath(element.parentNode) + '/' + element.tagName.toLowerCase() +  suffix;
         }
         if (sibling.nodeType === 1 && sibling.tagName === element.tagName)
