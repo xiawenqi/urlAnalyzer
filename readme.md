@@ -12,6 +12,7 @@ npm install
 node app.js
 ```
 
-浏览器访问 http://localhost:3000/static/index.html
+服务启动后访问 http://localhost:3000/static/index.html
 
-good luck:)
+毕业设计类项目
+一个基于jsdom的分析目标网页内各种元素的个数，并输出该元素的XPath， 元素类型放在elemTypes.json内
